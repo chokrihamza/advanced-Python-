@@ -33,6 +33,19 @@ def add(*a):
      print(val)
 
 add(2,3)
+# calss decorators
+class add_decorator(object):
+    def __init__(self,original_function):
+     self.original_function=original_function
+
+    def __call__(self,*args,**kwargs):
+        print("the result of adding is:")
+        return self.original_function(*args,**kwargs)
+@add_decorator
+def add(*a):
+    print(sum(a))
 
 
+#add_decorator(add)(1,2,3,4,5,6)
 
+add(1,2,3,4,5) #
