@@ -1,12 +1,17 @@
-def decorator_listedadd(addfun):
+def metadecortor(arg):
+  def decorator_listedadd(addfun):
     def wrapper(args):
-        return [addfun(val[0],val[1]) for val in args]
+        return [addfun(val[0],val[1])**power for val in args]
     return wrapper
+  if callable(arg):
+     power=2
+     return decorator_listedadd(arg)
+  else:
+     power=arg
+     return decorator_listedadd
 
 
-
-
-@decorator_listedadd
+@metadecortor
 def add(a,b):
     return a+b
 
